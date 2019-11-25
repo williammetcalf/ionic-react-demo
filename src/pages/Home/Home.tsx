@@ -1,11 +1,13 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useLocation } from "react-router";
 
 import { getPlatforms } from "@ionic/core";
 import {
-    IonBackButton, IonButtons, IonContent, IonHeader, IonItem, IonLabel, IonPage, IonTextarea,
-    IonTitle, IonToolbar
+    IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar
 } from "@ionic/react";
+
+import Form from "./Form";
+import useFormState, { MyForm } from "./useFormState";
 
 const Home: React.FC = () => {
   const { pathname } = useLocation();
@@ -23,16 +25,13 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
+        <Form
+          value={value}
+          onKeyChange={(key: keyof MyForm, value: string) =>
+            dispatch({ key, value })
+          }
+        />
         <p>{platforms.join(", ")}</p>
-        {/* 
-        <IonItem>
-          <IonLabel position="floating">Floating Label</IonLabel>
-          <IonTextarea
-            autoGrow
-            value={value}
-            onIonChange={e => setValue(e.detail.value as string)}
-          />
-        </IonItem> */}
       </IonContent>
     </IonPage>
   );
