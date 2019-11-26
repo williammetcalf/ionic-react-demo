@@ -15,23 +15,21 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 import React, { FC, useEffect } from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import { SplashScreen } from "@capacitor/core";
-import { getPlatforms } from "@ionic/core";
 import { defineCustomElements } from "@ionic/pwa-elements/loader";
 import { IonApp, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 
 import Camera from "./pages/Camera";
+import Form from "./pages/Form";
 import Home from "./pages/Home";
 
 const App: FC = () => {
   useEffect(() => {
-    // if (getPlatforms(window).includes("desktop"))
     defineCustomElements(window);
     SplashScreen.hide();
-    alert("Load");
   }, []);
 
   return (
@@ -39,20 +37,16 @@ const App: FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route path="/t1" component={Home} exact />
-            <Route path="/t2" component={Home} exact />
-            <Route path="/t3" component={Home} exact />
+            <Route path="/home" component={Home} exact />
+            <Route path="/form" component={Form} exact />
             <Route path="/cam" component={Camera} exact />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="t1" href="/t1">
-              <IonLabel>Tab One</IonLabel>
+            <IonTabButton tab="home" href="/home">
+              <IonLabel>Home</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="t2" href="/t2">
-              <IonLabel>Tab Two</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="t3" href="/t3">
-              <IonLabel>Tab Three</IonLabel>
+            <IonTabButton tab="form" href="/form">
+              <IonLabel>Form</IonLabel>
             </IonTabButton>
             <IonTabButton tab="cam" href="/cam">
               <IonLabel>Cam</IonLabel>

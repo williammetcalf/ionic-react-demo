@@ -1,9 +1,9 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 
 import { CameraResultType, Plugins } from "@capacitor/core";
-import { IonButton, IonContent, IonPage } from "@ionic/react";
+import { IonButton } from "@ionic/react";
 
-import Header from "../../Components/Header";
+import Page from "../../Components/Page";
 
 interface Props {}
 
@@ -12,8 +12,7 @@ const Camera: FC<Props> = () => {
   const [image, setImage] = useState<any>(null);
 
   return (
-    <IonPage>
-      <Header />
+    <Page title="Camera Demo">
       <IonButton
         onClick={() => {
           Camera.getPhoto({
@@ -25,10 +24,10 @@ const Camera: FC<Props> = () => {
       >
         Take Picture
       </IonButton>
-      <IonContent>
-        {image && <img src={`data:image/jpeg;charset=utf-8;base64,${image}`} />}
-      </IonContent>
-    </IonPage>
+      {image && (
+        <img alt="i" src={`data:image/jpeg;charset=utf-8;base64,${image}`} />
+      )}
+    </Page>
   );
 };
 
