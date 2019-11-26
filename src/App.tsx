@@ -15,7 +15,7 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 import React, { FC, useEffect } from "react";
-import { Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 
 import { SplashScreen } from "@capacitor/core";
 import { defineCustomElements } from "@ionic/pwa-elements/loader";
@@ -40,6 +40,7 @@ const App: FC = () => {
             <Route path="/home" component={Home} exact />
             <Route path="/form" component={Form} exact />
             <Route path="/cam" component={Camera} exact />
+            <Redirect from="/" to="/home" />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
             <IonTabButton tab="home" href="/home">
