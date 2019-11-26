@@ -1,30 +1,20 @@
-import React, { useCallback, useMemo } from "react";
-import { useLocation } from "react-router";
+import React from "react";
 
 import { getPlatforms } from "@ionic/core";
-import {
-    IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar
-} from "@ionic/react";
+import { IonContent, IonPage } from "@ionic/react";
 
+import Header from "../../Components/Header";
 import Form from "./Form";
 import useFormState, { MyForm } from "./useFormState";
 
 const Home: React.FC = () => {
-  const { pathname } = useLocation();
-  const platforms = useMemo(() => getPlatforms(window), []);
+  const platforms = getPlatforms(window);
   const [value, dispatch] = useFormState();
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>{pathname}</IonTitle>
-          <IonButtons slot="start">
-            <IonBackButton />
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
       <IonContent className="ion-padding">
+        <Header />
         <Form
           value={value}
           onKeyChange={(key: keyof MyForm, value: string) =>

@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "ionicReactTest",
+  "appId": "com.william",
+  "appName": "com.williammetcalf.ionic-react-test",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",
