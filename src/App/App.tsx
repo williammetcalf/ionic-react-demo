@@ -12,21 +12,26 @@ import "@ionic/react/css/text-transformation.css";
 import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 /* Theme variables */
-import "./theme/variables.css";
+import "../theme/variables.css";
 
 import React, { FC, useEffect } from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import { SplashScreen } from "@capacitor/core";
 import { defineCustomElements } from "@ionic/pwa-elements/loader";
-import { IonApp, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
+import { IonApp } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 
-import Camera from "./pages/Camera";
-import Form from "./pages/Form";
-import Home from "./pages/Home";
+import useIsDesktop from "../Components/use-is-desktop";
+import Camera from "../pages/Camera";
+import Form from "../pages/Form";
+import Home from "../pages/Home";
+import DesktopNavigation from "./DesktopNavigation";
+import TabNavigation from "./TabNavigation";
 
 const App: FC = () => {
+  const isDesktop = useIsDesktop();
+  const NavComponent = isDesktop ? DesktopNavigation : TabNavigation;
   useEffect(() => {
     defineCustomElements(window);
     SplashScreen.hide();
@@ -35,25 +40,11 @@ const App: FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet>
-            <Route path="/home" component={Home} exact />
-            <Route path="/form" component={Form} exact />
-            <Route path="/cam" component={Camera} exact />
-            <Redirect from="/" to="/home" />
-          </IonRouterOutlet>
-          <IonTabBar slot="bottom">
-            <IonTabButton tab="home" href="/home">
-              <IonLabel>Home</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="form" href="/form">
-              <IonLabel>Form</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="cam" href="/cam">
-              <IonLabel>Cam</IonLabel>
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
+        <NavComponent>
+          <Route path="/home" component={Home} exact />
+          <Route path="/form" component={Form} exact />
+          <Route path="/cam" component={Camera} exact />
+        </NavComponent>
       </IonReactRouter>
     </IonApp>
   );

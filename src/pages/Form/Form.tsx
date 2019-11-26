@@ -14,73 +14,67 @@ const Form: FC<Props> = props => {
   return (
     <form>
       <IonItem>
-        <IonLabel position="floating">f1</IonLabel>
+        <IonLabel position="floating">text</IonLabel>
         <IonInput
           value={value.f1}
           onIonChange={e => onKeyChange("f1", e.detail.value as string)}
+          type="text"
         />
       </IonItem>
       <IonItem>
-        <IonLabel position="floating">f2</IonLabel>
+        <IonLabel position="floating">number</IonLabel>
         <IonInput
           value={value.f2}
           onIonChange={e => onKeyChange("f2", e.detail.value as string)}
+          type="number"
         />
       </IonItem>
       <IonItem>
-        <IonLabel position="floating">f3</IonLabel>
+        <IonLabel position="floating">email</IonLabel>
         <IonInput
           value={value.f3}
           onIonChange={e => onKeyChange("f3", e.detail.value as string)}
+          type="email"
         />
       </IonItem>
       <IonItem>
-        <IonLabel position="floating">f4</IonLabel>
+        <IonLabel position="floating">password</IonLabel>
         <IonInput
           value={value.f4}
           onIonChange={e => onKeyChange("f4", e.detail.value as string)}
+          type="password"
         />
       </IonItem>
       <IonItem>
-        <IonLabel position="floating">f5</IonLabel>
+        <IonLabel position="floating">tel</IonLabel>
         <IonInput
           value={value.f5}
           onIonChange={e => onKeyChange("f5", e.detail.value as string)}
+          type="tel"
         />
       </IonItem>
       <IonItem>
-        <IonLabel position="floating">f6</IonLabel>
+        <IonLabel position="floating">time</IonLabel>
         <IonInput
           value={value.f6}
           onIonChange={e => onKeyChange("f6", e.detail.value as string)}
+          type="time"
         />
       </IonItem>
       <IonItem>
-        <IonLabel position="floating">f7</IonLabel>
+        <IonLabel position="floating">search</IonLabel>
         <IonInput
           value={value.f7}
           onIonChange={e => onKeyChange("f7", e.detail.value as string)}
+          type="search"
         />
       </IonItem>
       <IonItem>
-        <IonLabel position="floating">f8</IonLabel>
+        <IonLabel position="floating">url</IonLabel>
         <IonInput
           value={value.f8}
           onIonChange={e => onKeyChange("f8", e.detail.value as string)}
-        />
-      </IonItem>
-      <IonItem>
-        <IonLabel position="floating">f9</IonLabel>
-        <IonInput
-          value={value.f9}
-          onIonChange={e => onKeyChange("f9", e.detail.value as string)}
-        />
-      </IonItem>
-      <IonItem>
-        <IonLabel position="floating">f10</IonLabel>
-        <IonInput
-          value={value.f10}
-          onIonChange={e => onKeyChange("f10", e.detail.value as string)}
+          type="url"
         />
       </IonItem>
     </form>
